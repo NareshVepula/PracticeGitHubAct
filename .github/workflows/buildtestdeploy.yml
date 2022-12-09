@@ -13,6 +13,7 @@ jobs:
       - name: lint the project
         run: npm run lint
   build:
+    needs: lint
     runs-on: ubuntu-latest
     steps:
       - name: get the code
@@ -24,6 +25,7 @@ jobs:
       - name: build the project
         run: npm run build 
   tests:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: get the code
@@ -35,6 +37,7 @@ jobs:
       - name: Test the project
         run: npm run test 
   deploy:
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - name: get the code

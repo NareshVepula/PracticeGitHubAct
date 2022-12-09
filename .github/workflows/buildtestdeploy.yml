@@ -1,0 +1,36 @@
+name: build Test and deploy workflow
+on: [push, workflow_dispatch]
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code
+        uses: actions/checkout@v3
+      - name: install node JS
+        uses: actions/setup-node@v3
+      - name: install dependencies
+        run: npm ci
+      - name: lint the project
+        run: npm run lint
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code
+        uses: actions/checkout@v3
+      - name: install node JS
+        uses: actions/setup-node@v3
+      - name: install dependencies
+        run: npm ci
+      - name: build the project
+        run: npm run build 
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get the code
+        uses: actions/checkout@v3
+      - name: install node JS
+        uses: actions/setup-node@v3
+      - name: install dependencies
+        run: npm ci
+      - name: deploy the project
+        run: echo "deploying the build artefact to Tomcat servers..."

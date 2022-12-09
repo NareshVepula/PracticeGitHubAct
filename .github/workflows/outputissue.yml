@@ -1,0 +1,8 @@
+name: metadata about issue
+on: workflow_dispatch
+jobs:
+  getmetadatas:
+    runs-on: ubuntu-latest
+    steps:
+      - name: fetch context data
+        run: echo ${{ toJSON(github) }}

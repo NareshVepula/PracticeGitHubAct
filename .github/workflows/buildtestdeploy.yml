@@ -32,7 +32,7 @@ jobs:
         uses: actions/setup-node@v3
       - name: install dependencies
         run: npm ci
-      - name: build the project
+      - name: Test the project
         run: npm run test 
   deploy:
     runs-on: ubuntu-latest
